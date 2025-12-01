@@ -975,74 +975,300 @@ a {
 }
 
 /* Enhanced Hero Stats */
+/* Enhanced Hero Stats - RESPONSIVE */
 .hero-stats {
     position: relative;
     z-index: 4;
-    margin-top: -80px;
+    margin-top: -60px;
     padding-bottom: 40px;
 }
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
     border-radius: 16px;
-    padding: 30px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 .stat-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 20px;
+    gap: 15px;
+    padding: 15px;
     border-radius: 12px;
     transition: all 0.3s ease;
-    background: rgba(248, 245, 242, 0.5);
+    background: rgba(248, 245, 242, 0.8);
+    flex-wrap: nowrap;
+    min-width: 0; /* Prevent overflow */
 }
 
 .stat-item:hover {
     background: rgba(123, 24, 53, 0.05);
-    transform: translateY(-5px);
+    transform: translateY(-3px);
 }
 
 .stat-icon {
-    width: 60px;
-    height: 60px;
+    min-width: 50px;
+    width: 50px;
+    height: 50px;
     background: linear-gradient(135deg, var(--wine), #9d254b);
-    border-radius: 12px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 24px;
+    font-size: 20px;
     flex-shrink: 0;
 }
 
 .stat-content {
     flex: 1;
+    min-width: 0; /* Prevent text overflow */
+    overflow: hidden;
 }
 
 .stat-number {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     font-weight: 600;
     color: var(--wine);
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .stat-label {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--black);
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+    .stats-grid {
+        gap: 12px;
+        padding: 20px;
+    }
+    
+    .stat-item {
+        padding: 12px;
+        gap: 12px;
+    }
+    
+    .stat-icon {
+        min-width: 45px;
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+    
+    .stat-number {
+        font-size: 1.6rem;
+    }
+    
+    .stat-label {
+        font-size: 11px;
+        letter-spacing: 0.5px;
+    }
+}
+
+@media (max-width: 992px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 20px;
+    }
+    
+    .hero-stats {
+        margin-top: -50px;
+    }
+    
+    .stat-item {
+        padding: 15px;
+    }
+    
+    .stat-icon {
+        min-width: 50px;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .stat-label {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-stats {
+        margin-top: -40px;
+        padding: 0 15px 30px;
+    }
+    
+    .stats-grid {
+        gap: 12px;
+        padding: 18px;
+        border-radius: 14px;
+    }
+    
+    .stat-item {
+        padding: 12px;
+        gap: 12px;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .stat-icon {
+        min-width: 45px;
+        width: 45px;
+        height: 45px;
+        margin-bottom: 8px;
+    }
+    
+    .stat-content {
+        width: 100%;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+        margin-bottom: 4px;
+    }
+    
+    .stat-label {
+        font-size: 10px;
+        letter-spacing: 0.8px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-stats {
+        margin-top: -30px;
+        padding: 0 10px 25px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 15px;
+        border-radius: 12px;
+    }
+    
+    .stat-item {
+        padding: 15px;
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+    }
+    
+    .stat-icon {
+        min-width: 40px;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        margin-bottom: 0;
+    }
+    
+    .stat-number {
+        font-size: 1.4rem;
+    }
+    
+    .stat-label {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 375px) {
+    .hero-stats {
+        margin-top: -20px;
+    }
+    
+    .stats-grid {
+        padding: 12px;
+    }
+    
+    .stat-item {
+        padding: 12px;
+        gap: 10px;
+    }
+    
+    .stat-icon {
+        min-width: 35px;
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+    
+    .stat-number {
+        font-size: 1.3rem;
+    }
+    
+    .stat-label {
+        font-size: 10px;
+        letter-spacing: 0.5px;
+    }
+}
+
+/* Container responsive adjustments */
+@media (max-width: 1400px) {
+    .container {
+        padding: 0 20px;
+    }
+}
+
+/* Fix for very small screens */
+@media (max-width: 320px) {
+    .stat-item {
+        padding: 10px;
+    }
+    
+    .stat-icon {
+        min-width: 30px;
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+    
+    .stat-number {
+        font-size: 1.2rem;
+    }
+    
+    .stat-label {
+        font-size: 9px;
+    }
+}
+
+/* Prevent horizontal scrolling on mobile */
+@media (max-width: 768px) {
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .container {
+        width: 100%;
+        padding: 0 15px;
+    }
+}
 /* Responsive adjustments */
 @media (max-width: 1200px) {
     .hero-title {
